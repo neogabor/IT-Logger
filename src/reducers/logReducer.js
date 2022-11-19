@@ -30,12 +30,14 @@ const logReducer = (state = initialState, action) => {
         case UPDATE_LOG:
             return {
                 ...state,
-                logs: state.logs.map(log => log.id === action.payload.id ? action.payload : log)
+                logs: state.logs.map(log => log.id === action.payload.id ? action.payload : log),
+                loading: false,
             }
         case SEARCH_LOGS:
             return {
                 ...state,
                 logs: action.payload,
+                loading: false,
             }
         case SET_CURRENT:
             return {
@@ -57,6 +59,7 @@ const logReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.payload,
+                loading: false,
             }
         default:
             return state
